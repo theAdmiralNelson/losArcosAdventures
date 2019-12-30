@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>
+            Los Arcos Adventures
+        </title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Assistant:200|Archivo|Satisfy|Lato|Open+Sans|Roboto|Muli:200;"
+        >
+        <script src="scripts/index.js"></script>
+        <script>
+          // left: 37, up: 38, right: 39, down: 40,
+            // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+            var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+            function preventDefault(e) {
+              e = e || window.event;
+              if (e.preventDefault)
+                  e.preventDefault();
+              e.returnValue = false;  
+            }
+
+            function preventDefaultForScrollKeys(e) {
+                if (keys[e.keyCode]) {
+                    preventDefault(e);
+                    return false;
+                }
+            }
+
+            function disableScroll() {
+              if (window.addEventListener) // older FF
+                  window.addEventListener('DOMMouseScroll', preventDefault, false);
+              document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
+              window.onwheel = preventDefault; // modern standard
+              window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+              window.ontouchmove  = preventDefault; // mobile
+              document.onkeydown  = preventDefaultForScrollKeys;
+            }
+
+            function enableScroll() {
+                if (window.removeEventListener)
+                    window.removeEventListener('DOMMouseScroll', preventDefault, false);
+                document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
+                window.onmousewheel = document.onmousewheel = null; 
+                window.onwheel = null; 
+                window.ontouchmove = null;  
+                document.onkeydown = null;  
+            }
+
+            function hamburgerMenuOpen() {
+              const element = document.getElementById("hamburger-menu")
+              element.classList.add("open")
+              element.classList.remove("closed")
+              const hamburger = document.getElementById("hamburger-icon-container")
+              hamburger.classList.add("hidden")
+              const modal = document.getElementById("modal-bg")
+              modal.classList.remove("hidden")
+              modal.classList.add("grey")
+              disableScroll()
+            }
+
+            function hamburgerMenuClose() {
+              const element = document.getElementById("hamburger-menu")
+              element.classList.remove("open")
+              element.classList.add("closed")
+              const hamburger = document.getElementById("hamburger-icon-container")
+              hamburger.classList.remove("hidden")
+              const modal = document.getElementById("modal-bg")
+              modal.classList.add("hidden")
+              modal.classList.remove("grey")
+              enableScroll()
+            }
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> 
+        <link rel="stylesheet" type="text/css" href="styles/home.css" media="screen" />
+    </head>
+    <body>
+      <nav class="navbar navbar-default" id="navbar">
+        <div class="navbar-left">
+          <div class="title-logo">
+              <div class="laa">
+                <img src="images/LAA.png" width="150px" height="150px"/>
+              </div>
+              <h2>LOS ARCOS ADVENTURES</h2> 
+          </div>
+        </div>
+        <div class="container">
+          <div class="navbar-main">
+            <ul class="nav navbar-nav navbar-right" id="links">
+              <li><a  href="./index.html">HOME</a></li>
+              <li><a  href="./about.html">INFO</a></li> 
+              <li><a  href="./contact.html">CONTACT</a></li>                       
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+
+      <nav class="hamburger" id="hamburger">
+        <div class="hamburger-icon-container" id="hamburger-icon-container" onClick="hamburgerMenuOpen()">
+          <img class="hamburger-icon" src="images/hamburger.svg" />
+        </div>
+      </nav>
+            
+      <nav class="hamburger-menu-container">
+        <div class="hamburger-menu closed" id="hamburger-menu">
+          <div class="menu-items-container">
+            <img class="hamburger-menu-close" src="images/x.svg" onClick="hamburgerMenuClose()" />
+            <ul class="item-list">
+                <li class="menu-item"><a  href="./index.html">HOME</a></li>
+                <li class="menu-item"><a  href="./about.html">INFO</a></li> 
+                <li class="menu-item"><a  href="./contact.html">CONTACT</a></li> 
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="modal-bg hidden" id="modal-bg"></div>
+
+      <div class="image">
+        <h1 class="heading">FIND YOUR<br/>ADVENTURE</h1>
+        <h2>LOS ARCOS ADVENTURES</h2>
+        <p><a class="btn btn-large" href="./contact.html">Book A Tour Now!</a></p>
+      </div>
+            
+      <div class="about">
+        <div id="hero">
+          <div id="logo">
+            <img id="logo-image" src="images/LAA.png" width="150" height="auto"/>
+          </div>
+          <h2 id="title">Los Arcos Adventures</h2>
+          <hr />
+          </div>
+        <div >
+          <p id="about-info">
+            This website does not represent a large international tourism company, a vacation resort, 
+            or a travel agency. It was developed to connect you with a knowledgeable, 
+            local guide who will help you to explore the beauty of the Banderas Bay without 
+            crowding onto an overpriced tour with dozens of loud vacationers.
+          </p>
+        </div>
+      </div>
+
+      <div 
+        class="activities" 
+      >
+        <div class="los-arcos">
+          <p class="review-text">
+            Los Arcos
+            <hr 
+              style="width: 150px;
+              margin-left: auto;
+              margin-right: auto;
+              height: 100px;
+              background-color: rgb(31, 29, 29);
+              opacity: 0.5;
+              height: 1px"
+            />
+            <p class="review-text">
+              Los Arcos is a set of rock formations and sea caves just off the coast of Mismayloya
+              (only a few miles south of Puerto Vallarta, Mexico). The formations are home to hundreds of different species of 
+              fish and other sea creatures. The snorkeling there is incredible with schools of colorful fish and warm water.
+            </p>
+          </div>
+        </div>
+
+      <div class="rates">
+        <div>
+          <p class="rate-info">
+            For a fair hourly fee, your guide can offer:
+            <hr 
+              style="width: 150px;
+              margin-left: auto;
+              margin-right: auto;
+              height: 100px;
+              background-color: rgb(31, 29, 29);
+              opacity: 0.5;
+              height: 1px"
+            />
+            <ul class="rate-info">
+              Boat tours of the Banderas Bay<br/>
+                          
+              Snorkeling at the Los Arcos rock formations and sea caves<br />
+                          
+              Kayak rentals<br />
+                          
+              Local travel information and tips<br />
+                          
+              And more…
+            </ul>
+          </p>
+        </div>
+      </div>
+              
+      <div class="squares">
+        <a class="wave" href="./contact.html">
+          <div class="grid-pics-wave">
+            <p 
+              style="color: #fff;  
+              border-color: #fff;"
+            >
+              Schedule A Tour
+            </p>
+          </div>
+        </a>
+        <a class="woman" href="./about.html">
+          <div class="grid-pics-woman">
+            <p 
+              style="color: white;  
+              border-color: white;"
+            >
+              Meet Neli
+            </p>
+          </div>
+        </a>
+        <a class="turtle" href="./about.html">
+          <div class="grid-pics-turtle">
+            <p 
+              style="color: white; 
+              border-color: white;"
+            >
+              See The Wildlife
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div 
+        class="guide"  
+      >
+        <div>
+          <p class="review-text">
+            Neli
+            <hr 
+              style="width: 150px;
+              margin-left: auto;
+              margin-right: auto;
+              height: 100px;
+              background-color: rgb(31, 29, 29);
+              opacity: 0.5;
+              height: 1px"
+            />
+            <p class="review-text">
+              Neli is the face behind Los Arcos Adventures. She has lived in the area her whole life and is extremely knowledgeable. 
+              Neli offers all kinds of tours and rentals. For more information about your guide, <a href="./about.html">meet your guide</a>.
+            </p>
+          </div>
+        </div>
+
+      <div 
+        class="reviews" 
+      >
+        <div>
+          <p class="review-text">
+            Reviews
+            <hr 
+              style="width: 150px;
+              margin-left: auto;
+              margin-right: auto;
+              height: 100px;
+              background-color: rgb(31, 29, 29);
+              opacity: 0.5;
+              height: 1px"
+            />
+            <p class="review-text">
+              Los Arcos Adventures went way above and beyond! Neli is friendly, speaks amazing English, 
+              and her knowlege of the area and different fish species was impressive. We will 100% for sure
+              take another boat tour from her when we return to PV in the future!
+            </p>
+            <div id="review-tiny-text">
+              <p class="tiny-text">
+                Jared and Rachelle
+              </p>
+              <p class="tiny-text">
+                Idaho, USA
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="footer">
+          <div id="footer-grid">
+
+            <div id="footer-first-div">
+                <div class="footer-title">
+                  <p class="footer-text">
+                    ABOUT
+                  </p>
+                </div>
+                <div style="flex: 1;">
+                  <p class="footer-tiny-text">
+                    I'm Neli. I am a Puerto Vallarta native and have been
+                    giving guided tours to Los Arcos for many, many years.
+                  </p>
+                </div>
+            </div>
+
+            <div id="footer-second-div">
+                <div class="footer-title">
+                  <p class="footer-text">
+                    CONTACT
+                  </p>
+                </div>
+                <div style="flex: 1;">
+                  <p class="footer-tiny-text">
+                    Find me on WhatsApp:
+                  </p>
+                  <p class="footer-tiny-text">
+                    <img class="whatsapp" src="images/whatsapp.png" width="25px" height="25px" />
+                    <a href="https://api.whatsapp.com/send?phone=+523221469680">52-322-146-96-80</a>
+                  </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+              <div class="copyright-container">
+                <p>Copyright 2020. All Rights Reserved.</p>
+              </div>
+            </div>
+            
+          </div>
+
+
+        </div>
+    </body>
+  </html>

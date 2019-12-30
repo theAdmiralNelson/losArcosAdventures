@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Los Arcos Adventures
+    </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Assistant:200|Archivo|Satisfy|Lato|Open+Sans|Roboto|Muli:200;">
+    <script src="scripts/about.js"></script>
+    <script>
+        // left: 37, up: 38, right: 39, down: 40,
+        // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+        var keys = {
+            37: 1,
+            38: 1,
+            39: 1,
+            40: 1
+        };
+
+        function preventDefault(e) {
+            e = e || window.event;
+            if (e.preventDefault)
+                e.preventDefault();
+            e.returnValue = false;
+        }
+
+        function preventDefaultForScrollKeys(e) {
+            if (keys[e.keyCode]) {
+                preventDefault(e);
+                return false;
+            }
+        }
+
+        function disableScroll() {
+            if (window.addEventListener) // older FF
+                window.addEventListener('DOMMouseScroll', preventDefault, false);
+            document.addEventListener('wheel', preventDefault, {
+                passive: false
+            }); // Disable scrolling in Chrome
+            window.onwheel = preventDefault; // modern standard
+            window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+            window.ontouchmove = preventDefault; // mobile
+            document.onkeydown = preventDefaultForScrollKeys;
+        }
+
+        function enableScroll() {
+            if (window.removeEventListener)
+                window.removeEventListener('DOMMouseScroll', preventDefault, false);
+            document.removeEventListener('wheel', preventDefault, {
+                passive: false
+            }); // Enable scrolling in Chrome
+            window.onmousewheel = document.onmousewheel = null;
+            window.onwheel = null;
+            window.ontouchmove = null;
+            document.onkeydown = null;
+        }
+
+        function hamburgerMenuOpen() {
+            const element = document.getElementById("hamburger-menu")
+            element.classList.add("open")
+            element.classList.remove("closed")
+            const hamburger = document.getElementById("hamburger-icon-container")
+            hamburger.classList.add("hidden")
+            const modal = document.getElementById("modal-bg")
+            modal.classList.remove("hidden")
+            modal.classList.add("grey")
+            disableScroll()
+        }
+
+        function hamburgerMenuClose() {
+            const element = document.getElementById("hamburger-menu")
+            element.classList.remove("open")
+            element.classList.add("closed")
+            const hamburger = document.getElementById("hamburger-icon-container")
+            hamburger.classList.remove("hidden")
+            const modal = document.getElementById("modal-bg")
+            modal.classList.add("hidden")
+            modal.classList.remove("grey")
+            enableScroll()
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/about.css" media="screen" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default" id="navbar">
+        <div class="container">
+            <div class="navbar-main">
+                <ul class="nav navbar-nav navbar-right" id="links">
+                    <li><a href="./index.html">HOME</a></li>
+                    <li><a href="./about.html">INFO</a></li>
+                    <li><a href="./contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <nav class="hamburger" id="hamburger">
+        <div class="hamburger-icon-container" id="hamburger-icon-container" onClick="hamburgerMenuOpen()">
+            <img class="hamburger-icon" src="images/hamburger_black.svg" />
+        </div>
+    </nav>
+
+    <nav class="hamburger-menu-container">
+        <div class="hamburger-menu closed" id="hamburger-menu">
+            <div class="menu-items-container">
+                <img class="hamburger-menu-close" src="images/x.svg" onClick="hamburgerMenuClose()" />
+                <ul class="item-list">
+                    <li class="menu-item"><a href="./index.html">HOME</a></li>
+                    <li class="menu-item"><a href="./about.html">INFO</a></li>
+                    <li class="menu-item"><a href="./contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-bg hidden" id="modal-bg"></div>
+
+    <div class="about">
+        <div id="hero">
+            <h2 id="title">ABOUT YOUR GUIDE</h2>
+            <hr />
+        </div>
+        <div>
+            <p id="about-info">
+                Neli is a delightful Puerto Vallarta native. She lives in the village of Mismaloya where she likes to grow banana plants. She is a proud mother and grandmother, and for many years she owned and operated a tour boat business with her son. In recent years,
+                she has transitioned into working as an adventure guide, specializing in the Los Arcos area. She is very knowledgeable about tides and weather patterns, she is a fluent English speaker, and she knows everyone in town.
+
+            </p>
+        </div>
+    </div>
+
+    <div class="rates" style="background-color: rgb(244, 248, 250); 
+        margin-bottom: 100px; 
+        margin-top: 60px">
+        <div style="padding: 40px">
+            <p class="rate-info">
+                How to schedule your adventure:
+            </p>
+            <hr style="width: 150px;
+              margin-left: auto;
+              margin-right: auto;
+              height: 100px;
+              background-color: rgb(31, 29, 29);
+              opacity: 0.5;
+              height: 1px" />
+            <p class="rate-info">
+                Neli primarily communicates with prospective adventurers using an app called WhatsApp. It is free to download from your preferred app store (Samsung or iPhone compatible) and it allows international calling and texting via WiFi.  Her WhatsApp contact
+                information is: 322-146-96-80
+
+            </p>
+        </div>
+    </div>
+    <div class="rates">
+        <div>
+            <p class="rate-info">
+                Where you will meet your guide to start your adventure:
+                <hr style="width: 150px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  height: 100px;
+                  background-color: rgb(31, 29, 29);
+                  opacity: 0.5;
+                  height: 1px" />
+                <p class="rate-info">
+                    Neli operates from the beautiful Mismaloya. Mismaloya is a small village with a jungle fringed beach.   There you will find several quaint restaurants, water taxis, and stands selling fresh fruit, snacks, and souvenirs.
+                </p>
+            </p>
+        </div>
+    </div>
+    <div class="squares">
+        <div class="grid-pics-wave">
+
+        </div>
+        <div class="grid-pics-woman">
+
+        </div>
+        <div class="grid-pics-turtle">
+
+        </div>
+    </div>
+    <div class="directions">
+        <div>
+            <p class="rate-info">
+                How to get there:
+                <hr style="width: 150px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    height: 100px;
+                    background-color: rgb(31, 29, 29);
+                    opacity: 0.5;
+                    height: 1px" />
+                <p class="rate-info">
+                    Mismaloya is easily accessible to travelers. If you have never visited, just getting there is part of the fun. It is about a 20 minute drive from Old Town Puerto Vallarta and a 30 minute water taxi ride from Los Muertos Pier. If you are driving yourself,
+                    it is easy to find on google maps and there are plenty of road signs. Street parking is available in the village. You may also take the orange bus that leaves from the corner of Constitucion and Basilio Badillo.
+
+                </p>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="footer">
+        <div id="footer-grid">
+
+            <div id="footer-first-div">
+                <div class="footer-title">
+                    <p class="footer-text">
+                        ABOUT
+                    </p>
+                </div>
+                <div style="flex: 1;">
+                    <p class="footer-tiny-text">
+                        I'm Neli. I am a Puerto Vallarta native and have been giving guided tours to Los Arcos for many, many years.
+                    </p>
+                </div>
+            </div>
+
+            <div id="footer-second-div">
+                <div class="footer-title">
+                    <p class="footer-text">
+                        CONTACT
+                    </p>
+                </div>
+                <div style="flex: 1;">
+                    <p class="footer-tiny-text">
+                        Find me on WhatsApp:
+                    </p>
+                    <p class="footer-tiny-text">
+                        <img class="whatsapp" src="images/whatsapp.png" width="25px" height="25px" />
+                        <a href="https://api.whatsapp.com/send?phone=+523221469680">52-322-146-96-80</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div class="copyright-container">
+                    <p>Copyright 2020. All Rights Reserved.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

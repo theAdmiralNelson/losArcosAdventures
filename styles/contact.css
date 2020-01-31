@@ -570,6 +570,10 @@ div#footer-second-div {
   grid-area: copyright;
 }
 
+.islands {
+  margin: 0 0 60px 0;
+}
+
 @media (max-width: 761px) {
   body div#footer {
     height: 100% !important;

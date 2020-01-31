@@ -290,7 +290,14 @@ p#about-info {
   margin-bottom: 120px;
 }
 
+.list {
+  text-align: center;
+}
+
 .rate-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "assistant", san-serif;
   font-size: 35px;
   margin: 0 30px;
@@ -530,6 +537,9 @@ div#footer-second-div {
     font-size: 20px !important;
   }
   body .rate-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 20px !important;
   }
   .grid-pics-wave {
@@ -604,7 +614,7 @@ div#footer-second-div {
   }
 
   body .reviews {
-    height: 600px;
+    height: 900px;
     margin: 0;
   }
 
@@ -657,7 +667,7 @@ div#footer-second-div {
     margin-bottom: 0;
   }
   body .rates {
-    height: 500px;
+    height: 700px;
     margin-bottom: 0;
   }
   body .review-text {
@@ -774,6 +784,9 @@ div#footer-second-div {
   }
 
   body .rate-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "assistant", san-serif;
     font-size: 30px;
     color: #6c6d6f;

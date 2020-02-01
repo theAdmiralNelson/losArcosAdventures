@@ -571,6 +571,8 @@ div#footer-second-div {
 }
 
 .islands {
+  width: 80%;
+  height: auto;
   margin: 0 0 60px 0;
 }
 

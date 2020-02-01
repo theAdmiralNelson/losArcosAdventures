@@ -192,9 +192,11 @@
   .rates {
     height: 800px !important;
   }
+}
 
+@media (max-width: 300px) {
   .rates-wildlife {
-    height: 1200px !important;
+    height: 1800px !important;
   }
 }
 
@@ -385,8 +387,6 @@ p#about-info {
   justify-content: center;
   align-items: center;
   background-color: rgb(250, 247, 244);
-  margin-left: 40px;
-  margin-right: 40px;
   height: 500px;
   margin-bottom: 60px;
 }
@@ -396,8 +396,6 @@ p#about-info {
   justify-content: center;
   align-items: center;
   background-color: rgb(250, 247, 244);
-  margin-left: 40px;
-  margin-right: 40px;
   height: 500px;
   margin-bottom: 60px;
 }
@@ -590,6 +588,8 @@ div#footer-second-div {
 }
 
 .islands {
+  height: auto;
+  width: 80%;
   margin: 0 auto 40px auto;
 }
 

@@ -653,6 +653,21 @@ div#footer-second-div {
   }
 }
 
+@media (max-width: 300px) {
+  body .activities {
+    height: 650px !important;
+  }
+  body .rates {
+    height: 650px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  body .reviews {
+    height: 1100px !important;
+  }
+}
+
 @media (max-width: 1198px) {
   body .image {
     height: 820px;
